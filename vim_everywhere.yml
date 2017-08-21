@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+    - name: Check if vim is installed
+      apt: pkg='vim' state=installed update-cache=true
+      ignore_errors: True
+      become: True
+    - name: Puch vimrc file
+      copy:
+        src: './vimrc.remote'
+        dest: "{{ ansible_env['HOME'] }}/.vimrc"
+        owner: "{{ ansible_user_id }}"
+        mode: 0600

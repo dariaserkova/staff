@@ -1,0 +1,9 @@
+---
+- hosts: all
+
+  tasks:
+          - name: Copy key
+            authorized_key:
+               user: "{{ ansible_env['USER'] }}"
+               state: present
+               key: "{{ lookup('file', '{{ ansible_private_key_file }}') }}"

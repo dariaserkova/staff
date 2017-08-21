@@ -1,0 +1,9 @@
+---
+- hosts: all
+  tasks:
+    - name: Push bashrc file
+      copy:
+        src: './bashrc.remote'
+        dest: "{{ ansible_env['HOME'] }}/.bashrc"
+        owner: "{{ ansible_user_id }}"
+        mode: 0600
