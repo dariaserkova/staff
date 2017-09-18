@@ -6,4 +6,4 @@
             authorized_key:
                user: "{{ ansible_env['USER'] }}"
                state: present
-               key: "{{ lookup('file', '{{ ansible_private_key_file }}') }}"
+               key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/id_rsa.pub') }}"
